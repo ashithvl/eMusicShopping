@@ -1,7 +1,9 @@
 package com.eMusicShopping.controller;
 
-import com.eMusicShopping.dao.ProductDao;
 import com.eMusicShopping.model.Product;
+import com.eMusicShopping.service.IProductService;
+import com.eMusicShopping.service.ProductServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -14,7 +16,8 @@ import java.util.List;
 @Controller
 public class HomeController {
 
-    private ProductDao productDao = new ProductDao();
+    @Autowired
+    private IProductService productService;
 
     @RequestMapping("/")
     public String home() {
@@ -23,7 +26,7 @@ public class HomeController {
 
     @RequestMapping("/productList")
     public String getProducts(Model model) {
-        List<Product> productList = productDao.getProductList();
+        List<Product> productList = productService.getAllProducts();
         model.addAttribute("products", productList);
 
         return "productList";
@@ -31,8 +34,7 @@ public class HomeController {
 
     @RequestMapping("/productList/viewProduct/{productId}")
     public String viewProduct(@PathVariable int productId, Model model) {
-
-        Product product = productDao.getProductById(productId);
+        Product product = productService.getProductById(productId);
         model.addAttribute(product);
 
         return "viewProduct";
@@ -45,8 +47,7 @@ public class HomeController {
 
     @RequestMapping("/admin/productInventory")
     public String productInventory(Model model) {
-
-        List<Product> productList = productDao.getProductList();
+        List<Product> productList = productService.getAllProducts();
         model.addAttribute("products", productList);
 
         return "productInventory";
@@ -66,7 +67,7 @@ public class HomeController {
 
     @RequestMapping(value = "/admin/productInventory/addProduct", method = RequestMethod.POST)
     public String addProduct(@ModelAttribute("product") Product product) {
-        productDao.addProduct(product);
+        productService.addProduct(product);
 
         return "redirect:/admin/productInventory";
     }
