@@ -30,7 +30,8 @@
         </thead>
         <c:forEach items="${products}" var="product">
             <tr>
-                <td><img src="#" alt="image"/></td>
+                <td><img src="<c:url value="/resources/images/${product.productId}.png" />"
+                         style="width: 300px; height: 150px;" class="img-thumbnail" alt="image"/></td>
                 <td>${product.productName}</td>
                 <td>${product.productCategory}</td>
                 <td>${product.productCondition}</td>
@@ -38,7 +39,9 @@
                 <td>
                     <a href="<spring:url value="/productList/viewProduct/${product.productId}"/>">
                         <span class="glyphicon glyphicon-info-sign"></span>
-                    </a>
+                    </a> <a href="<spring:url value="/admin/productInventory/deleteProduct/${product.productId}"/>">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
                 </td>
             </tr>
         </c:forEach>

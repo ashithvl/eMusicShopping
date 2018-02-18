@@ -28,7 +28,8 @@
         <h1>Add Product</h1>
         <p class="lead">Fill the below information to add a Product!</p>
 
-        <form:form action="#" method="post" commandName="product">
+        <form:form action="${pageContext.request.contextPath}/admin/productInventory/addProduct" method="post"
+                   commandName="product" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="name">Name</label>
                 <form:input path="productName" id="name" cssClass="form-control"/>
@@ -90,12 +91,12 @@
                 <form:input class="form-control" id="manufacturer" autocomplete="off" path="productManufacturer"/>
             </div>
 
-            <%--<div class="form-group">--%>
-            <%--<label for="productImage">Product Image:</label>--%>
-            <%--<div class="btn btn-default btn-file">--%>
-            <%--<form:input type="file" name="productImage" id="productImage" path="file"/>--%>
-            <%--</div>--%>
-            <%--</div>--%>
+            <div class="form-group">
+                <label for="productImage">Product Image:</label>
+                <div class="btn btn-default btn-file">
+                    <form:input class="form-control" type="file" id="productImage" path="productImage"/>
+                </div>
+            </div>
 
             <p><input type="submit" value="Submit" class="btn btn-success"/>
                 <a href="<c:url value="/admin/productInventory"/> ">

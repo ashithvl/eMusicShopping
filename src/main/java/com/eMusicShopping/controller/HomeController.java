@@ -2,7 +2,6 @@ package com.eMusicShopping.controller;
 
 import com.eMusicShopping.model.Product;
 import com.eMusicShopping.service.IProductService;
-import com.eMusicShopping.service.ProductServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,7 +9,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 @Controller
@@ -18,6 +22,8 @@ public class HomeController {
 
     @Autowired
     private IProductService productService;
+
+    private Path path;
 
     @RequestMapping("/")
     public String home() {
@@ -60,15 +66,36 @@ public class HomeController {
         product.setProductCondition("new");
         product.setProductStatus("active");
 
+
         model.addAttribute("product", product);
 
         return "addProduct";
     }
 
     @RequestMapping(value = "/admin/productInventory/addProduct", method = RequestMethod.POST)
-    public String addProduct(@ModelAttribute("product") Product product) {
+    public String addProduct(@ModelAttribute("product") Product product, HttpServletRequest httpServletRequest) {
         productService.addProduct(product);
+
+        MultipartFile productImage = product.getProductImage();
+        String rootPath = httpServletRequest.getSession().getServletContext().getRealPath("/");
+        path = Paths.get(rootPath + "\\WEB-INF\\resources\\images\\" + product.getProductId() + ".png");
+
+        if (productImage != null && !productImage.isEmpty()) {
+            try {
+                productImage.transferTo(new File(path.toString()));
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                throw new RuntimeException("Product Image saving Failed");
+            }
+        }
+        return "redirect:/admin/productInventory";
+    }
+
+    @RequestMapping("/admin/productInventory/deleteProduct/{productId}")
+    public String deleteProduct(@PathVariable int productId, Model model) {
+        productService.deleteProduct(productId);
 
         return "redirect:/admin/productInventory";
     }
+
 }
