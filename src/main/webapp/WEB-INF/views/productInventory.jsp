@@ -9,7 +9,7 @@
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@include file="template/header.jsp" %>
 
-<div class="container">
+<div class="container container-wrapper ">
     <div class="container">
         <div class="page-header">
             <h1>All Products</h1>
@@ -39,9 +39,13 @@
                 <td>
                     <a href="<spring:url value="/productList/viewProduct/${product.productId}"/>">
                         <span class="glyphicon glyphicon-info-sign"></span>
-                    </a> <a href="<spring:url value="/admin/productInventory/deleteProduct/${product.productId}"/>">
-                    <span class="glyphicon glyphicon-remove"></span>
-                </a>
+                    </a>
+                    <a href="<spring:url value="/admin/productInventory/editProduct/${product.productId}"/>">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </a>
+                    <a href="<spring:url value="/admin/productInventory/deleteProduct/${product.productId}"/>">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
                 </td>
             </tr>
         </c:forEach>

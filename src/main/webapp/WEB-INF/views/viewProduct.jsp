@@ -16,7 +16,7 @@
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@include file="template/header.jsp" %>
 
-<div class="container">
+<div class="container container-wrapper ">
     <div class="page-header">
         <h1>Product Details</h1>
         <p class="lead">Here is the total information about the Product!</p>

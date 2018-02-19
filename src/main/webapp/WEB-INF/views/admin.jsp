@@ -8,7 +8,7 @@
 
 <%@include file="template/header.jsp" %>
 
-<div class="container">
+<div class="container container-wrapper ">
     <div class="page-header">
         <h1>Administrator Page</h1>
         <p class="lead">This is Administrator Page!</p>

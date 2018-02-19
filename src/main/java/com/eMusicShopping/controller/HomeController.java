@@ -62,10 +62,6 @@ public class HomeController {
     @RequestMapping("/admin/productInventory/addProduct")
     public String addProduct(Model model) {
         Product product = new Product();
-        product.setProductCategory("Instrument");
-        product.setProductCondition("new");
-        product.setProductStatus("active");
-
 
         model.addAttribute("product", product);
 
@@ -94,6 +90,35 @@ public class HomeController {
     @RequestMapping("/admin/productInventory/deleteProduct/{productId}")
     public String deleteProduct(@PathVariable int productId, Model model) {
         productService.deleteProduct(productId);
+
+        return "redirect:/admin/productInventory";
+    }
+
+    @RequestMapping("/admin/productInventory/editProduct/{productId}")
+    public String editProduct(@PathVariable int productId, Model model) {
+        Product product = productService.getProductById(productId);
+        model.addAttribute(product);
+
+        return "editProduct";
+    }
+
+    @RequestMapping(value = "/admin/productInventory/editProduct",method = RequestMethod.POST)
+    public String editProduct(@ModelAttribute("product") Product product,HttpServletRequest httpServletRequest) {
+
+        MultipartFile productImage = product.getProductImage();
+        String rootPath = httpServletRequest.getSession().getServletContext().getRealPath("/");
+        path = Paths.get(rootPath + "\\WEB-INF\\resources\\images\\" + product.getProductId() + ".png");
+
+        if (productImage != null && !productImage.isEmpty()) {
+            try {
+                productImage.transferTo(new File(path.toString()));
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                throw new RuntimeException("Product Image saving Failed");
+            }
+        }
+
+        productService.editProduct(product);
 
         return "redirect:/admin/productInventory";
     }

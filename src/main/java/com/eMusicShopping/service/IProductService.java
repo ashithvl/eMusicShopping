@@ -8,6 +8,8 @@ public interface IProductService {
 
     void addProduct(Product product);
 
+    void editProduct(Product product);
+
     Product getProductById(int id);
 
     List getAllProducts();
