@@ -20,7 +20,8 @@
             <form:hidden path="productId" value="${product.productId}"/>
             <div class="form-group">
                 <label for="name">Name</label>
-                <form:input path="productName" id="name" cssClass="form-control" value="${product.productName}"/>
+                <form:errors path="productName" class="text-danger"/>
+                <form:input path="productName" id="name" class="form-control" value="${product.productName}"/>
             </div>
 
             <label class="input-type">Category</label>
@@ -38,12 +39,15 @@
 
             <div class="form-group">
                 <label for="description">Description:</label>
-                <form:textarea class="form-control" rows="5" id="description" path="productDescription" value="${product.productDescription}"/>
+                <form:textarea class="form-control" rows="5" id="description" path="productDescription"
+                               value="${product.productDescription}"/>
             </div>
 
             <div class="form-group">
                 <label for="price">Price:</label>
-                <form:input class="form-control" id="price" autocomplete="off" placeholder="Price" path="productPrice" value="${product.productPrice}"/>
+                <form:errors path="productPrice" class="text-danger"/>
+                <form:input class="form-control" id="price" autocomplete="off" placeholder="Price" path="productPrice"
+                            value="${product.productPrice}"/>
             </div>
 
             <label class="input-type">Condition</label>
@@ -71,12 +75,15 @@
 
             <div class="form-group">
                 <label for="unitInStock">Unit In Stock:</label>
-                <form:input class="form-control" id="unitInStock" autocomplete="off" path="unitInStock" value="${product.unitInStock}"/>
+                <form:errors path="unitInStock" class="alert alert-danger"/>
+                <form:input class="form-control" id="unitInStock" autocomplete="off" path="unitInStock"
+                            value="${product.unitInStock}"/>
             </div>
 
             <div class="form-group">
                 <label for="manufacturer">Manufacturer:</label>
-                <form:input class="form-control" id="manufacturer" autocomplete="off" path="productManufacturer" value="${product.productManufacturer}"/>
+                <form:input class="form-control" id="manufacturer" autocomplete="off" path="productManufacturer"
+                            value="${product.productManufacturer}"/>
             </div>
 
             <div class="form-group">

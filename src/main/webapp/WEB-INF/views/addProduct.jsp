@@ -18,7 +18,8 @@
                    commandName="product" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="name">Name</label>
-                <form:input path="productName" id="name" cssClass="form-control"/>
+                <form:errors path="productName" class="text-danger"/>
+                <form:input path="productName" id="name" class="form-control"/>
             </div>
 
             <label class="input-type">Category</label>
@@ -41,6 +42,7 @@
 
             <div class="form-group">
                 <label for="price">Price:</label>
+                <form:errors path="productPrice" class="text-danger"/>
                 <form:input class="form-control" id="price" autocomplete="off" placeholder="Price" path="productPrice"/>
             </div>
 
@@ -69,6 +71,7 @@
 
             <div class="form-group">
                 <label for="unitInStock">Unit In Stock:</label>
+                <form:errors path="unitInStock" class="text-danger"/>
                 <form:input class="form-control" id="unitInStock" autocomplete="off" path="unitInStock"/>
             </div>
 
@@ -89,9 +92,7 @@
                     <input type="button" value="Cancel" class="btn btn-danger"/></a></p>
         </form:form>
 
-
     </div>
-
 
 </div>
 

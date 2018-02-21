@@ -1,9 +1,9 @@
 package com.eMusicShopping.dao;
 
 import com.eMusicShopping.model.Product;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -30,7 +30,7 @@ public class ProductDaoImpl implements IProductDao {
 
     public Product getProductById(int id) {
         Session session = sessionFactory.getCurrentSession();
-        Product product = session.get(Product.class, id);
+        Product product = (Product) session.get(Product.class, id);
         session.flush();
         return product;
     }
@@ -45,7 +45,7 @@ public class ProductDaoImpl implements IProductDao {
 
     public void deleteProduct(int id) {
         Session session = sessionFactory.getCurrentSession();
-        Product product = session.load(Product.class, id);
+        Product product = (Product) session.load(Product.class, id);
         if (product != null)
             session.delete(product);
         session.flush();
