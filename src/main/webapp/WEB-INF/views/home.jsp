@@ -19,7 +19,7 @@
                 <div class="carousel-caption">
                     <h1>Welcome to My Music.</h1>
                     <p>Music is like a dream. One that I cannot hear.</p>
-                    <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+                    <p><a class="btn btn-lg btn-primary" href="/register" role="button">Sign up today</a></p>
                 </div>
             </div>
         </div>

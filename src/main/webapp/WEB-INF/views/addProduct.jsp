@@ -43,7 +43,7 @@
             <div class="form-group">
                 <label for="price">Price:</label>
                 <form:errors path="productPrice" class="text-danger"/>
-                <form:input class="form-control" autocomplete="off" id="price" autocomplete="off" placeholder="Price" path="productPrice"/>
+                <form:input class="form-control" id="price" autocomplete="off" placeholder="Price" path="productPrice"/>
             </div>
 
             <label class="input-type">Condition</label>

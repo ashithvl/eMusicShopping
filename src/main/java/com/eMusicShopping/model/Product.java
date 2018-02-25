@@ -6,10 +6,13 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
-public class Product {
+public class Product  implements Serializable {
+
+    private static final long serialVersionUID = -5275312162791227880L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -19,9 +19,6 @@
 
     <title>eMusicShopping</title>
 
-    <!-- Angular JS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js"></script>
-
     <!-- Bootstrap core CSS -->
     <link href="<c:url value="/resources/css/bootstrap.css" />" rel="stylesheet">
 
@@ -49,9 +46,8 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="<c:url value="/"/> ">Home</a></li>
-                        <li><a href="<c:url value="/product/productList"/> ">Products</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li class="${home}"><a href="<c:url value="/"/> ">Home</a></li>
+                        <li class="${productClass}"><a href="<c:url value="/product/productList"/> ">Products</a></li>
                     </ul>
                     <ul class="nav navbar-nav pull-right">
                         <c:if test="${pageContext.request.userPrincipal.name != null}">

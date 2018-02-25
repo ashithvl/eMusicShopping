@@ -24,6 +24,8 @@ public class Cart implements Serializable {
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
+    private double gran_total;
+
     public Customer getCustomer() {
         return customer;
     }
@@ -31,8 +33,6 @@ public class Cart implements Serializable {
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
-
-    private double gran_total;
 
     public int getCart_id() {
         return cart_id;

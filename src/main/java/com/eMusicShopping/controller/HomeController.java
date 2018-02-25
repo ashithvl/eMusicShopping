@@ -10,7 +10,8 @@ public class HomeController {
 
 
     @RequestMapping("/")
-    public String home() {
+    public String home(Model model) {
+        model.addAttribute("home","active");
         return "home";
     }
 

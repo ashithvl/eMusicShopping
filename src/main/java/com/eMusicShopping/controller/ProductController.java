@@ -21,7 +21,7 @@ public class ProductController {
     public String getProducts(Model model) {
         List<Product> productList = productService.getAllProducts();
         model.addAttribute("products", productList);
-
+        model.addAttribute("productClass","active");
         return "productList";
     }
 
@@ -29,7 +29,7 @@ public class ProductController {
     public String viewProduct(@PathVariable int productId, Model model) {
         Product product = productService.getProductById(productId);
         model.addAttribute(product);
-
+        model.addAttribute("productClass","active");
         return "viewProduct";
     }
 

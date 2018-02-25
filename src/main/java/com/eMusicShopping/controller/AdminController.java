@@ -38,14 +38,14 @@ public class AdminController {
     public String productInventory(Model model) {
         List<Product> productList = productService.getAllProducts();
         model.addAttribute("products", productList);
-
+        model.addAttribute("productClass","active");
         return "productInventory";
     }
 
     @RequestMapping(value ="/admin/productInventory/addProduct", method = RequestMethod.GET)
     public String addProduct(Model model) {
         Product product = new Product();
-
+        model.addAttribute("productClass","active");
         model.addAttribute("product", product);
 
         return "addProduct";
@@ -53,13 +53,14 @@ public class AdminController {
 
     @RequestMapping(value = "/admin/productInventory/addProduct", method = RequestMethod.POST)
     public String addProduct(@ModelAttribute("product") @Valid Product product, BindingResult bindingResult,
-                             HttpServletRequest httpServletRequest) {
+                             HttpServletRequest httpServletRequest,Model model) {
 
         if (bindingResult.hasErrors()) {
             return "addProduct";
         }
         productService.addProduct(product);
 
+        model.addAttribute("productClass","active");
         MultipartFile productImage = product.getProductImage();
         String rootPath = httpServletRequest.getSession().getServletContext().getRealPath("/");
         path = Paths.get(rootPath + "\\WEB-INF\\resources\\images\\" + product.getProductId() + ".png");
@@ -83,6 +84,7 @@ public class AdminController {
     @RequestMapping("/admin/productInventory/deleteProduct/{productId}")
     public String deleteProduct(@PathVariable int productId, Model model, HttpServletRequest request) {
 
+        model.addAttribute("productClass","active");
         String rootDirectory = request.getSession().getServletContext().getRealPath("/");
         path = Paths.get(rootDirectory + "//WEB-INF//resources//images//" + productId + ".png");
 
@@ -103,12 +105,13 @@ public class AdminController {
         Product product = productService.getProductById(productId);
         model.addAttribute(product);
 
+        model.addAttribute("productClass","active");
         return "editProduct";
     }
 
     @RequestMapping(value = "/admin/productInventory/editProduct", method = RequestMethod.POST)
     public String editProduct(@ModelAttribute("product") @Valid Product product, BindingResult bindingResult
-            , HttpServletRequest httpServletRequest) {
+            , HttpServletRequest httpServletRequest,Model model) {
 
         if (bindingResult.hasErrors()) {
             return "editProduct";
@@ -117,6 +120,7 @@ public class AdminController {
         String rootPath = httpServletRequest.getSession().getServletContext().getRealPath("/");
         path = Paths.get(rootPath + "\\WEB-INF\\resources\\images\\" + product.getProductId() + ".png");
 
+        model.addAttribute("productClass","active");
         saveImageAsProductId(productImage);
 
         productService.editProduct(product);
@@ -126,7 +130,6 @@ public class AdminController {
 
     @RequestMapping(value = "/customer",method = RequestMethod.GET)
     public String customerManagement(Model model){
-
         return "customerManagement";
     }
 }

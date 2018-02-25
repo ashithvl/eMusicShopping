@@ -58,7 +58,9 @@ public class CustomerDaoImpl implements ICustomerDao {
     @Override
     public Customer getCustomerById(int customerId) {
         Session session = sessionFactory.getCurrentSession();
-        return session.get(Customer.class, customerId);
+        Customer customer = session.get(Customer.class, customerId);
+        session.flush();
+        return customer;
     }
 
     @Override
@@ -67,15 +69,18 @@ public class CustomerDaoImpl implements ICustomerDao {
         Query query = session.createQuery("from Customer");
         List<Customer> customerList = query.list();
 
+        session.flush();
         return customerList;
     }
 
     @Override
     public Customer getCustomerByUsername(String customerName) {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("from Customer where customer_name=?");
-        query.setString(0, customerName);
-        System.out.println(query.uniqueResult());
-        return (Customer) query.uniqueResult();
+        Query query = session.createQuery("from Customer where customer_username = :customerName");
+        query.setParameter("customerName", customerName);
+        Customer customer = (Customer) query.uniqueResult();
+
+        session.flush();
+        return customer;
     }
 }
