@@ -19,7 +19,7 @@
             <div class="form-group">
                 <label for="name">Name</label>
                 <form:errors path="productName" class="text-danger"/>
-                <form:input path="productName" id="name" class="form-control"/>
+                <form:input path="productName" id="name" class="form-control" autocomplete="off"/>
             </div>
 
             <label class="input-type">Category</label>
@@ -37,13 +37,13 @@
 
             <div class="form-group">
                 <label for="description">Description:</label>
-                <form:textarea class="form-control" rows="5" id="description" path="productDescription"/>
+                <form:textarea class="form-control" rows="5" id="description" autocomplete="off" path="productDescription"/>
             </div>
 
             <div class="form-group">
                 <label for="price">Price:</label>
                 <form:errors path="productPrice" class="text-danger"/>
-                <form:input class="form-control" id="price" autocomplete="off" placeholder="Price" path="productPrice"/>
+                <form:input class="form-control" autocomplete="off" id="price" autocomplete="off" placeholder="Price" path="productPrice"/>
             </div>
 
             <label class="input-type">Condition</label>
@@ -90,6 +90,8 @@
             <p><input type="submit" value="Submit" class="btn btn-success"/>
                 <a href="<c:url value="/admin/productInventory"/> ">
                     <input type="button" value="Cancel" class="btn btn-danger"/></a></p>
+
+            <%--<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">--%>
         </form:form>
 
     </div>

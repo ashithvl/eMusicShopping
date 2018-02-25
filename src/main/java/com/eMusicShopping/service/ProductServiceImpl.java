@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-@Transactional
 public class ProductServiceImpl implements IProductService {
 
     @Autowired
@@ -22,14 +21,14 @@ public class ProductServiceImpl implements IProductService {
 
     @Override
     public void editProduct(Product product) {
-       productDao.editProduct(product);
+        productDao.editProduct(product);
     }
 
     public Product getProductById(int id) {
         return productDao.getProductById(id);
     }
 
-    public List getAllProducts() {
+    public List<Product> getAllProducts() {
         return productDao.getAllProducts();
     }
 

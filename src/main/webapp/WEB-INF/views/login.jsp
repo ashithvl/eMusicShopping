@@ -11,9 +11,8 @@
 
 <div class="container-wrapper">
     <div class="container">
-        <div id="login-box">
-            <h2>Login with Username And Password</h2>
-
+        <h2 style="text-align: center;">Login with Username And Password</h2>
+        <div class="col-md-offset-3 col-md-6">
             <c:if test="${not empty msg}">
                 <div class="alert alert-success alert-dismissable">${msg}</div>
             </c:if>
@@ -26,15 +25,15 @@
 
                 <div class="form-group">
                     <label for="username">Username: </label>
-                    <input type="text" id="username" name="username" class="form-control"/>
+                    <input type="text" id="username" autocomplete="off" name="username" class="form-control"/>
                 </div>
                 <div class="form-group">
                     <label for="username">Password: </label>
                     <input type="password" id="password" name="password" class="form-control"/>
                 </div>
-                <input type="submit" value="Submit" class="btn btn-default"/>
+                <input type="submit" value="Login" class="btn btn-default"/>
 
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+                <%--<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">--%>
 
             </form>
         </div>

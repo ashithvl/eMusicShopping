@@ -15,6 +15,8 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
@@ -40,7 +42,7 @@ public class AdminController {
         return "productInventory";
     }
 
-    @RequestMapping("/admin/productInventory/addProduct")
+    @RequestMapping(value ="/admin/productInventory/addProduct", method = RequestMethod.GET)
     public String addProduct(Model model) {
         Product product = new Product();
 
@@ -79,7 +81,18 @@ public class AdminController {
     }
 
     @RequestMapping("/admin/productInventory/deleteProduct/{productId}")
-    public String deleteProduct(@PathVariable int productId, Model model) {
+    public String deleteProduct(@PathVariable int productId, Model model, HttpServletRequest request) {
+
+        String rootDirectory = request.getSession().getServletContext().getRealPath("/");
+        path = Paths.get(rootDirectory + "//WEB-INF//resources//images//" + productId + ".png");
+
+        if (Files.exists(path)) {
+            try {
+                Files.delete(path);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
         productService.deleteProduct(productId);
 
         return "redirect:/admin/productInventory";
@@ -109,5 +122,11 @@ public class AdminController {
         productService.editProduct(product);
 
         return "redirect:/admin/productInventory";
+    }
+
+    @RequestMapping(value = "/customer",method = RequestMethod.GET)
+    public String customerManagement(Model model){
+
+        return "customerManagement";
     }
 }

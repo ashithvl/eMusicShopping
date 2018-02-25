@@ -12,7 +12,7 @@ public interface IProductService {
 
     Product getProductById(int id);
 
-    List getAllProducts();
+    List<Product> getAllProducts();
 
     void deleteProduct(int id);
 }
