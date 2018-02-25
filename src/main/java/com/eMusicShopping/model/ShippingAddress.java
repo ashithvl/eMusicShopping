@@ -32,10 +32,6 @@ public class ShippingAddress implements Serializable{
     @JsonBackReference
     private Customer customer;
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
-
     public int getShipping_address_id() {
         return shipping_address_id;
     }
@@ -111,8 +107,7 @@ public class ShippingAddress implements Serializable{
     @Override
     public String toString() {
         return "ShippingAddress{" +
-                "shipping_address_id=" + shipping_address_id +
-                ", street='" + street + '\'' +
+                "street='" + street + '\'' +
                 ", division='" + division + '\'' +
                 ", number_apartment='" + number_apartment + '\'' +
                 ", city='" + city + '\'' +

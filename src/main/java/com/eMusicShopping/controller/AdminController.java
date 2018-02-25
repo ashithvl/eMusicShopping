@@ -1,6 +1,8 @@
 package com.eMusicShopping.controller;
 
+import com.eMusicShopping.model.Customer;
 import com.eMusicShopping.model.Product;
+import com.eMusicShopping.service.ICustomerService;
 import com.eMusicShopping.service.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,6 +28,9 @@ public class AdminController {
 
     @Autowired
     private IProductService productService;
+
+    @Autowired
+    private ICustomerService customerService;
 
     private Path path;
 
@@ -128,8 +133,10 @@ public class AdminController {
         return "redirect:/admin/productInventory";
     }
 
-    @RequestMapping(value = "/customer",method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/customer",method = RequestMethod.GET)
     public String customerManagement(Model model){
+        List<Customer> customerList = customerService.getAllCustomers();
+        model.addAttribute("customerList",customerList);
         return "customerManagement";
     }
 }

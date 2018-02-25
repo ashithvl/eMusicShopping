@@ -23,6 +23,10 @@
     <p>
         Here you can view, edit and Modify the product Inventory!
     </p>
+    <h3><a href="<c:url value="/admin/customer"/> ">Customer Management</a></h3>
+    <p>
+        Here you can view the Customer Information!
+    </p>
 </div>
 
 
