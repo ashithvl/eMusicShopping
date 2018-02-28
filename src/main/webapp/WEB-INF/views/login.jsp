@@ -31,6 +31,22 @@
                     <label for="username">Password: </label>
                     <input type="password" id="password" name="password" class="form-control"/>
                 </div>
+                <%--<div class="form-group">--%>
+                    <%--<label for="username">Pin: </label>--%>
+                    <%--<input type="password" id="pin" name="pin" class="form-control"/>--%>
+                <%--</div>--%>
+                <%--<p>Please Choose the Algorithm:</p>--%>
+                <%--<div class="form-group">--%>
+                    <%--<label class="radio-inline">--%>
+                        <%--<input type="radio" name="alg">Option 1--%>
+                    <%--</label>--%>
+                    <%--<label class="radio-inline">--%>
+                        <%--<input type="radio" name="alg">Option 2--%>
+                    <%--</label>--%>
+                    <%--<label class="radio-inline">--%>
+                        <%--<input type="radio" name="alg">Option 3--%>
+                    <%--</label>--%>
+                <%--</div>--%>
                 <input type="submit" value="Login" class="btn btn-default"/>
 
                 <%--<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">--%>

@@ -32,4 +32,9 @@ public class CustomerServiceImpl implements ICustomerService {
     public List<Customer> getAllCustomers() {
         return iCustomerDao.getAllCustomers();
     }
+
+    @Override
+    public Customer checkPin(String pin, String option) {
+        return iCustomerDao.checkPin(pin,option);
+    }
 }

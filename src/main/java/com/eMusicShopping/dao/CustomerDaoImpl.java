@@ -83,4 +83,16 @@ public class CustomerDaoImpl implements ICustomerDao {
         session.flush();
         return customer;
     }
+
+    @Override
+    public Customer checkPin(String pin, String option) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("from Customer where pin = :pin AND pin_alg= :pin_alg");
+        query.setParameter("pin", pin);
+        query.setParameter("pin_alg", option);
+        Customer customer = (Customer) query.uniqueResult();
+
+        session.flush();
+        return customer;
+    }
 }

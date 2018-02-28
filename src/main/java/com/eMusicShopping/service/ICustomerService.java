@@ -14,4 +14,6 @@ public interface ICustomerService {
 
     List<Customer> getAllCustomers();
 
+    Customer checkPin(String pin, String option);
+
 }

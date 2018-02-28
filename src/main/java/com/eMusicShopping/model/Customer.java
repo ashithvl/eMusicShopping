@@ -32,6 +32,12 @@ public class Customer implements Serializable{
     @NotEmpty(message = "Customer Password must not be Empty")
     private String customer_password;
 
+    @NotEmpty(message = "Customer Pin must not be Empty")
+    private String pin;
+
+    @NotEmpty(message = "Customer Pin Algorithm must not be Empty")
+    private String pin_alg;
+
     private boolean enabled;
 
     @OneToOne
@@ -48,6 +54,22 @@ public class Customer implements Serializable{
     @JoinColumn(name = "cart_id")
     @JsonIgnore
     private Cart cart;
+
+    public String getPin() {
+        return pin;
+    }
+
+    public void setPin(String pin) {
+        this.pin = pin;
+    }
+
+    public String getPin_alg() {
+        return pin_alg;
+    }
+
+    public void setPin_alg(String pin_alg) {
+        this.pin_alg = pin_alg;
+    }
 
     public int getCustomer_id() {
         return customer_id;

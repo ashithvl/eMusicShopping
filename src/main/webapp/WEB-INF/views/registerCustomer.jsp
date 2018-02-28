@@ -1,4 +1,5 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@include file="template/header.jsp" %>
 
@@ -17,12 +18,14 @@
             <h3>User Information: </h3>
 
             <div class="form-group">
-                <label for="name"> Full name </label> <form:errors path="customer_name" cssStyle="color: red"/>
+                <label for="name"> Full name </label>
+                <form:errors path="customer_name" cssStyle="color: red"/>
                 <form:input path="customer_name" id="name" class="form-control" tabindex="1"/>
             </div>
 
             <div class="form-group">
-                <label for="email"> Email </label>  <form:errors path="customer_name" cssStyle="color: red"/>
+                <label for="email"> Email </label>
+                <form:errors path="customer_name" cssStyle="color: red"/>
                 <form:input path="customer_email" id="email" class="form-control" tabindex="2"/>
             </div>
 
@@ -33,7 +36,8 @@
             </div>
 
             <div class="form-group">
-                <label for="username"> Username </label>  <form:errors path="customer_name" cssStyle="color: red"/>
+                <label for="username"> Username </label>
+                <form:errors path="customer_name" cssStyle="color: red"/>
                 <form:input path="customer_username" id="username" class="form-control" tabindex="4"/>
             </div>
 
@@ -43,6 +47,25 @@
                 <form:password path="customer_password" id="password" class="form-control" tabindex="5"/>
             </div>
 
+            <div class="form-group">
+                <label for="pin">Pin </label>
+                <form:errors path="pin" cssStyle="color: red"/>
+                <form:input type="password" path="pin" id="pin" name="pin" class="form-control" maxlength="4"/>
+            </div>
+
+            <label>Please Choose the Algorithm for Pin:</label>
+            <div class="form-group">
+                <form:errors path="pin_alg" cssClass="color: red"/>
+                <label class="radio-inline">
+                    <form:radiobutton path="pin_alg" name="alg" value="1"/>MD5
+                </label>
+                <label class="radio-inline">
+                    <form:radiobutton path="pin_alg" name="alg" value="2"/>SHA-512
+                </label>
+                <label class="radio-inline">
+                    <form:radiobutton path="pin_alg" name="alg" value="3"/>PBKDF2
+                </label>
+            </div>
 
             <h3>Billing Address: </h3>
 

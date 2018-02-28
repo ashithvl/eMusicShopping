@@ -13,4 +13,6 @@ public interface ICustomerDao {
     List<Customer> getAllCustomers();
 
     Customer getCustomerByUsername(String customerName);
+
+    Customer checkPin(String pin, String option);
 }
