@@ -46,13 +46,16 @@
                 <br>
                 <p>
                     <a href="<c:url value="/product/productList" />" class="btn btn-default">Back</a>
-                    <a href="<c:url value="/customer/cart/add/${product.productId}" />"
-                       class="btn btn-warning btn-large">
-                        <span class="glyphicon glyphicon-shopping-cart"></span> Order Now
-                    </a>
-                    <a href="<spring:url value="/customer/cart" />"
-                       class="btn btn-default"><span class="glyphicon glyphicon-hand-right"></span> View Cart</a>
+                    <c:if test="${pageContext.request.userPrincipal.name != 'admin'}">
+                        <a href="<c:url value="/customer/cart/add/${product.productId}"/>"
+                           class="btn btn-warning btn-large">
+                            <span class="glyphicon glyphicon-shopping-cart"></span> Order Now
+                        </a>
+                        <a href="<spring:url value="/customer/cart"/>"
+                           class="btn btn-default"><span class="glyphicon glyphicon-hand-right"></span> View Cart</a>
+                    </c:if>
                 </p>
+
             </div>
         </div>
     </div>
