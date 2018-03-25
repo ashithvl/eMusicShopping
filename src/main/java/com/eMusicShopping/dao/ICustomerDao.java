@@ -15,4 +15,11 @@ public interface ICustomerDao {
     Customer getCustomerByUsername(String customerName);
 
     Customer checkPin(String pin, String option);
+
+    String getMD5(String input);
+
+    public String SHA256(String password);
+
+    public String PBKDF2WithHmacSHA1(String password, String salt);
+
 }

@@ -16,4 +16,9 @@ public interface ICustomerService {
 
     Customer checkPin(String pin, String option);
 
+    String getMD5(String input);
+
+    String SHA256(String password);
+
+    String PBKDF2WithHmacSHA1(String password, String salt);
 }

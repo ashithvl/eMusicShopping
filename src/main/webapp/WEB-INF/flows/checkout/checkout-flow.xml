@@ -5,7 +5,6 @@
 
     <var name="order" class="com.eMusicShopping.model.CustomerOrder"/>
 
-
     <action-state id="addCartToOrder">
         <evaluate expression="cartDaoImp.validate(requestParameters.id)" result="order.cart"/>
         <transition to="InvalidCartWarning" on-exception="java.io.IOException"/>

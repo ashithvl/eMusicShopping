@@ -98,7 +98,7 @@
                         <input type="radio" name="alg" value="1">MD5
                     </label>
                     <label class="radio-inline">
-                        <input type="radio" name="alg" value="2">SHA-512
+                        <input type="radio" name="alg" value="2">SHA-256
                     </label>
                     <label class="radio-inline">
                         <input type="radio" name="alg" value="3">PBKDF2

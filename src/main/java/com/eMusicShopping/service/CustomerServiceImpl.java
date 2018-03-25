@@ -35,6 +35,21 @@ public class CustomerServiceImpl implements ICustomerService {
 
     @Override
     public Customer checkPin(String pin, String option) {
-        return iCustomerDao.checkPin(pin,option);
+        return iCustomerDao.checkPin(pin, option);
+    }
+
+    @Override
+    public String getMD5(String input) {
+        return iCustomerDao.getMD5(input);
+    }
+
+    @Override
+    public String SHA256(String password) {
+        return iCustomerDao.SHA256(password);
+    }
+
+    @Override
+    public String PBKDF2WithHmacSHA1(String password, String salt) {
+        return iCustomerDao.PBKDF2WithHmacSHA1(password, salt);
     }
 }

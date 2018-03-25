@@ -60,7 +60,7 @@
                     <form:radiobutton path="pin_alg" name="alg" value="1"/>MD5
                 </label>
                 <label class="radio-inline">
-                    <form:radiobutton path="pin_alg" name="alg" value="2"/>SHA-512
+                    <form:radiobutton path="pin_alg" name="alg" value="2"/>SHA-256
                 </label>
                 <label class="radio-inline">
                     <form:radiobutton path="pin_alg" name="alg" value="3"/>PBKDF2
